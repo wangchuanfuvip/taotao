@@ -1,0 +1,6 @@
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/pojo/Item.java
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/controller/SearchController.java
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/service/ApiService.java
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/service/RabbitItemService.java
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/service/SearchService.java
+/Users/wangchuanfu/Work/taotao_work/taotao-search/src/main/java/com/taotao/search/util/IdleConnectionEvictor.java

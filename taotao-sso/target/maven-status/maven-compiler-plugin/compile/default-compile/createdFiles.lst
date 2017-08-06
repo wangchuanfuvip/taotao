@@ -1,0 +1,5 @@
+com/taotao/sso/mapper/UserMapper.class
+com/taotao/sso/service/UserService.class
+com/taotao/sso/controller/UserController.class
+com/taotao/sso/utils/MD5.class
+com/taotao/sso/pojo/User.class

@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<!-- 定义RabbitMQ的连接工厂 -->
+	<rabbit:connection-factory id="connectionFactory"
+		host="${rabbit.ip}" port="${rabbit.port}" username="${rabbit.username}" password="${rabbit.password}"
+		virtual-host="${rabbit.vhost}" />
+
+	<!-- 定义Rabbit模板，指定连接工厂以及定义exchange -->
+	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
+		exchange="itemDirectExchange" />
+
+<!-- 定义消息队列 -->
+	<rabbit:queue name="taotao-web.itemQueue" auto-declare="true"/>
+	
+	<!-- 定义交换机，并且完成队列和交换机的绑定 -->
+	<rabbit:direct-exchange name="itemDirectExchange" auto-declare="true">
+		<rabbit:bindings>
+			<rabbit:binding queue="taotao-web.itemQueue" key="update"/>
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	
+	<!-- 定义监听 -->
+	<rabbit:listener-container connection-factory="connectionFactory">
+		<rabbit:listener ref="rabbitItemService" method="updateItem" queue-names="taotao-web.itemQueue"/>
+	</rabbit:listener-container>
+	
+	
+	
+	</beans>
